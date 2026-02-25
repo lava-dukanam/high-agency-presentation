@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Is Not Enough — Building High Agency Platform Teams</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --r-background-color: #0a0a0f;
+      --r-main-font: 'Inter', sans-serif;
+      --r-heading-font: 'Inter', sans-serif;
+      --r-main-color: #e0e0e8;
+      --r-heading-color: #ffffff;
+      --r-link-color: #6c9cff;
+      --accent-orange: #ff6b35;
+      --accent-blue: #4ecdc4;
+      --accent-purple: #a855f7;
+      --accent-green: #22c55e;
+      --accent-red: #ef4444;
+      --accent-yellow: #eab308;
+      --accent-cyan: #06b6d4;
+    }
+
+    .reveal {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+
+    .reveal h1 { font-size: 2.6em; line-height: 1.1; }
+    .reveal h2 { font-size: 1.6em; line-height: 1.2; margin-bottom: 0.3em; }
+    .reveal h3 { font-size: 1.2em; line-height: 1.3; }
+
+    .reveal p, .reveal li {
+      font-size: 0.7em;
+      line-height: 1.5;
+    }
+
+    .reveal .slides section {
+      padding: 10px 40px;
+      box-sizing: border-box;
+      height: 100%;
+    }
+
+    .title-slide h1 {
+      font-size: 2.8em;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 0%, #6c9cff 50%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.3em;
+    }
+
+    .title-slide .subtitle {
+      font-size: 1.1em;
+      color: #888;
+      font-weight: 300;
+    }
+
+    .section-title h2 { font-size: 2.2em; font-weight: 900; }
+
+    .gradient-text-orange { background: linear-gradient(135deg, #ff6b35, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text-blue { background: linear-gradient(135deg, #4ecdc4, #6c9cff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text-purple { background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text-green { background: linear-gradient(135deg, #22c55e, #4ecdc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text-red { background: linear-gradient(135deg, #ef4444, #ff6b35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text-cyan { background: linear-gradient(135deg, #06b6d4, #6c9cff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .transition-note {
+      font-size: 0.6em !important;
+      font-style: italic;
+      color: #666;
+      margin: 0 0 10px 0;
+      text-align: left;
+      border-left: 2px solid #333;
+      padding-left: 12px;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 1.05em !important;
+      color: #ccc;
+      border-left: 4px solid var(--accent-purple);
+      padding-left: 24px;
+      margin: 16px 0;
+      line-height: 1.5;
+    }
+
+    .quote .attribution {
+      font-size: 0.6em;
+      color: #888;
+      font-style: normal;
+      margin-top: 8px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: left;
+    }
+
+    .card h4 { font-size: 0.7em; font-weight: 700; margin: 0 0 6px 0; }
+    .card p, .card li { font-size: 0.55em !important; color: #aaa; margin: 0; line-height: 1.5; }
+    .card ul { margin: 4px 0 0 0; padding-left: 16px; }
+
+    .card-accent-orange { border-top: 3px solid var(--accent-orange); }
+    .card-accent-blue { border-top: 3px solid var(--accent-blue); }
+    .card-accent-purple { border-top: 3px solid var(--accent-purple); }
+    .card-accent-green { border-top: 3px solid var(--accent-green); }
+    .card-accent-red { border-top: 3px solid var(--accent-red); }
+    .card-accent-cyan { border-top: 3px solid var(--accent-cyan); }
+    .card-accent-yellow { border-top: 3px solid var(--accent-yellow); }
+
+    .level-stack { display: flex; flex-direction: column; gap: 7px; margin-top: 14px; }
+    .level-bar { display: flex; align-items: center; padding: 10px 16px; border-radius: 10px; font-size: 0.6em; }
+    .level-bar .level-num { font-weight: 900; font-size: 1.3em; margin-right: 14px; min-width: 26px; }
+    .level-bar .level-label { font-weight: 600; min-width: 140px; }
+    .level-bar .level-desc { color: #ccc; font-weight: 300; }
+
+    .level-1 { background: rgba(239, 68, 68, 0.12); border-left: 4px solid #ef4444; }
+    .level-2 { background: rgba(234, 179, 8, 0.12); border-left: 4px solid #eab308; }
+    .level-3 { background: rgba(255, 107, 53, 0.12); border-left: 4px solid #ff6b35; }
+    .level-4 { background: rgba(34, 197, 94, 0.12); border-left: 4px solid #22c55e; }
+    .level-5 { background: rgba(168, 85, 247, 0.12); border-left: 4px solid #a855f7; }
+
+    .versus { display: flex; align-items: stretch; gap: 20px; margin-top: 16px; }
+    .versus .side { flex: 1; padding: 16px; border-radius: 12px; text-align: left; }
+    .versus .side-left { background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.15); }
+    .versus .side-right { background: rgba(34, 197, 94, 0.06); border: 1px solid rgba(34, 197, 94, 0.15); }
+    .versus .side h4 { font-size: 0.8em; margin: 0 0 8px 0; }
+    .versus .side p, .versus .side li { font-size: 0.55em !important; color: #bbb; }
+    .versus .vs-divider { display: flex; align-items: center; font-weight: 900; font-size: 1em; color: #444; }
+
+    .big-number { font-size: 4em; font-weight: 900; line-height: 1; margin: 0; }
+
+    .highlight-box { background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 10px; padding: 14px 24px; margin: 14px 0; }
+    .highlight-box-green { background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.25); }
+    .highlight-box-orange { background: rgba(255, 107, 53, 0.08); border: 1px solid rgba(255, 107, 53, 0.25); }
+
+    .reveal ul { list-style: none; padding-left: 0; }
+    .reveal ul li::before { content: "▸ "; color: var(--accent-blue); font-weight: bold; }
+    .reveal .compact li { font-size: 0.6em; line-height: 1.45; margin-bottom: 2px; }
+
+    .timeline { display: flex; align-items: center; justify-content: center; gap: 0; margin: 20px 0; }
+    .timeline-item { text-align: center; padding: 10px 14px; }
+    .timeline-item .time-label { font-size: 0.45em; color: #888; margin-bottom: 4px; }
+    .timeline-item .time-topic { font-size: 0.55em; font-weight: 600; }
+    .timeline-arrow { font-size: 1em; color: #444; }
+
+    .emoji-icon { font-size: 1.4em; margin-bottom: 6px; display: block; }
+    .reveal .slide-number { font-family: 'Inter', sans-serif; font-size: 12px; color: #555; }
+
+    .progress-bar { width: 100%; height: 5px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin: 8px 0 2px; }
+    .progress-fill { height: 100%; border-radius: 3px; }
+
+    .flywheel-step { font-size: 0.65em; padding: 8px 20px; border-radius: 10px; margin: 3px auto; display: inline-block; }
+    .flywheel-arrow { font-size: 1.1em; color: #444; margin: 0; line-height: 1; }
+
+    /* === JOURNEY TRACKER === */
+    .journey-tracker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-top: 30px;
+    }
+    .journey-step {
+      text-align: center;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.4em;
+      font-weight: 600;
+      color: #444;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      min-width: 80px;
+      transition: all 0.3s;
+    }
+    .journey-step.done {
+      color: #666;
+      border-color: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+    }
+    .journey-step.done::before {
+      content: "✓ ";
+      color: #555;
+    }
+    .journey-step.active {
+      color: #fff;
+      border-color: currentColor;
+      transform: scale(1.1);
+      font-weight: 700;
+    }
+    .journey-connector {
+      width: 20px;
+      height: 1px;
+      background: #333;
+      flex-shrink: 0;
+    }
+    .journey-connector.done {
+      background: #555;
+    }
+
+    /* === INTERACTION SLIDE === */
+    .interaction-slide {
+      text-align: center;
+    }
+    .interaction-badge {
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 20px;
+      font-size: 0.5em;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      background: rgba(78,205,196,0.15);
+      color: var(--accent-blue);
+      border: 1px solid rgba(78,205,196,0.3);
+    }
+    .interaction-prompt {
+      font-size: 1.1em !important;
+      color: #ddd;
+      margin: 20px 0;
+      line-height: 1.4;
+    }
+    .interaction-instructions {
+      font-size: 0.6em !important;
+      color: #888;
+      margin-top: 16px;
+    }
+
+    /* === STORY SLIDE === */
+    .story-slide {
+      text-align: center;
+    }
+    .story-badge {
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 20px;
+      font-size: 0.5em;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      background: rgba(255,107,53,0.15);
+      color: var(--accent-orange);
+      border: 1px solid rgba(255,107,53,0.3);
+    }
+    .story-prompt-text {
+      font-size: 0.9em !important;
+      color: #777;
+      font-style: italic;
+      margin: 20px auto;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+    .speaker-note {
+      font-size: 0.55em !important;
+      color: #444;
+      margin-top: 30px;
+      border: 1px dashed #333;
+      border-radius: 8px;
+      padding: 12px 20px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===== 1: Title ===== -->
+      <section class="title-slide" data-background-gradient="linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%)">
+        <h1>Are you smart enough?</h1>
+        <p class="subtitle">Building High Agency Platform Teams</p>
+        <br>
+        <p style="font-size: 0.55em; color: #555;">90 Minutes &middot; Interactive Session</p>
+      </section>
+
+      <!-- ===== 2: Agenda ===== -->
+      <section data-background-color="#0a0a0f">
+        <h2><span class="gradient-text-blue">Today's Journey</span></h2>
+        <p style="font-size: 0.6em; color: #777; margin-bottom: 6px;">From <em>why agency matters</em> to <em>how to build it</em> to <em>where it's heading</em>.</p>
+        <div class="timeline" style="flex-wrap: wrap; justify-content: center;">
+          <div class="timeline-item"><div class="time-label">10 min</div><div class="time-topic" style="color: var(--accent-orange);">The Paradigm Shift</div></div>
+          <div class="timeline-arrow">&rarr;</div>
+          <div class="timeline-item"><div class="time-label">20 min</div><div class="time-topic" style="color: var(--accent-purple);">Levels of Agency</div></div>
+          <div class="timeline-arrow">&rarr;</div>
+          <div class="timeline-item"><div class="time-label">20 min</div><div class="time-topic" style="color: var(--accent-green);">Ownership &amp; Safety</div></div>
+          <div class="timeline-arrow">&rarr;</div>
+          <div class="timeline-item"><div class="time-label">20 min</div><div class="time-topic" style="color: var(--accent-cyan);">Systems &amp; Product</div></div>
+          <div class="timeline-arrow">&rarr;</div>
+          <div class="timeline-item"><div class="time-label">10 min</div><div class="time-topic" style="color: var(--accent-blue);">AI-Native Teams</div></div>
+          <div class="timeline-arrow">&rarr;</div>
+          <div class="timeline-item"><div class="time-label">10 min</div><div class="time-topic" style="color: #888;">Q&amp;A</div></div>
+        </div>
+        <p style="font-size: 0.55em; color: #555; margin-top: 10px; text-align: center;">Each section builds on the last. By the end, you'll have a complete operating model.</p>
+      </section>
+
+      <!-- ===== 3: The Question ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #1a0800 0%, #0a0a0f 100%)">
+        <h2>A question that kept coming up...</h2>
+        <p class="quote" style="margin-top: 30px;">"Why do some teams with average talent consistently outperform teams full of brilliant engineers?"</p>
+        <div style="text-align: center; margin-top: 40px;">
+          <p style="font-size: 0.75em; color: #aaa;">The answer isn't what I expected.<br>It wasn't about smarts. It was about <strong style="color: var(--accent-orange);">how they acted on what they knew</strong>.</p>
+        </div>
+      </section>
+
+      <!-- ===== 4: STORY — Opening ===== 
+      <section class="story-slide" data-background-gradient="linear-gradient(135deg, #1a0a00 0%, #0a0a0f 100%)">
+        <div class="story-badge">Your Story</div>
+        <h2 style="font-size: 1.4em;">A moment that made this real</h2>
+        <p class="story-prompt-text">Tell the audience about a specific time you saw a "smart" team get outperformed by a team that simply <em>acted</em>. Make it personal. Name the project. Describe what happened.</p>
+        <p class="speaker-note">Speaker note: This is your hook. 90 seconds max. End with: "That experience changed how I think about what makes teams great. Let me share the framework I've built since."</p>
+      </section> -->
+
+      <!-- ===== 5: Intellect vs Skill ===== -->
+      <section>
+        <p class="transition-note">This led me to an important distinction...</p>
+        <h2><span class="gradient-text-orange">Intellect vs Skill</span></h2>
+        <div class="versus">
+          <div class="side side-left" style="background: rgba(168, 85, 247, 0.06); border-color: rgba(168, 85, 247, 0.15);">
+            <h4 style="color: var(--accent-purple);">Intellect</h4>
+            <ul class="compact">
+              <li>Raw cognitive horsepower</li>
+              <li>Pattern recognition &amp; abstraction</li>
+              <li>Knowing <em>what</em> could be done</li>
+              <li>Potential energy</li>
+            </ul>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="side side-right">
+            <h4 style="color: var(--accent-green);">Skill (Applied Agency)</h4>
+            <ul class="compact">
+              <li>Consistent execution under pressure</li>
+              <li>Turning insight into action</li>
+              <li>Knowing <em>how</em> to get it done</li>
+              <li>Kinetic energy</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 14px;">
+          <p style="font-size: 0.65em; margin: 0; text-align: center;"><strong>The gap between intellect and skill is bridged by <span style="color: var(--accent-orange);">agency</span></strong> &mdash; the willingness to act, iterate, and own outcomes.</p>
+        </div>
+      </section>
+
+      <!-- ===== 6: The Core Insight ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #1a0a2e 0%, #0a1a2e 100%)">
+        <p class="transition-note">Put another way...</p>
+        <h2>The Core Insight</h2>
+        <p class="quote">"Intelligence without action is just potential energy."</p>
+        <div class="card-grid" style="margin-top: 16px;">
+          <div class="card card-accent-red">
+            <h4 style="color: var(--accent-red);">Smart but Passive</h4>
+            <p>Sees problems, analyzes perfectly, writes great documents... but waits for permission to act.</p>
+          </div>
+          <div class="card card-accent-green">
+            <h4 style="color: var(--accent-green);">Skilled and Active</h4>
+            <p>Sees problems, proposes solutions, runs experiments, ships fixes, and retrospects.</p>
+          </div>
+        </div>
+        <p style="font-size: 0.6em; color: #777; margin-top: 14px; text-align: center;">The world doesn't reward what you <em>know</em> &mdash; it rewards what you <em>do</em> with what you know.</p>
+      </section>
+
+      <!-- ===== SECTION I: PARADIGM SHIFT ===== -->
+
+      <!-- ===== 7: Section Title ===== -->
+      <section class="section-title" data-background-gradient="linear-gradient(135deg, #1a0800 0%, #0a0a0f 100%)">
+        <p style="font-size: 0.65em; color: var(--accent-orange); font-weight: 600; letter-spacing: 0.1em;">PART I</p>
+        <h2><span class="gradient-text-orange">The Paradigm Shift<br>in Engineering</span></h2>
+        <p style="font-size: 0.6em; color: #666; margin-top: 16px;">Why this distinction matters <em>more now</em> than ever before.</p>
+        <div class="journey-tracker">
+          <div class="journey-step active" style="color: var(--accent-orange); border-color: var(--accent-orange); background: rgba(255,107,53,0.1);">Paradigm Shift</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Intelligence Trap</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Ownership</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Systems</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">AI-Native</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Conclusion</div>
+        </div>
+      </section>
+
+      <!-- ===== 8: AI Revolution ===== -->
+      <section>
+        <p class="transition-note">The reason is a seismic shift in our industry...</p>
+        <h2>The AI Revolution in Software</h2>
+        <p class="quote">"The specific act of writing code will become far less important. The core engineering task will be making the system achieve its goals."
+          <span class="attribution">&mdash; Sam Altman</span>
+        </p>
+        <div class="highlight-box-orange highlight-box" style="margin-top: 16px;">
+          <p style="font-size: 0.65em; margin: 0;">Engineers are evolving from <strong>code writers</strong> to <strong>system architects</strong> and <strong>outcome owners</strong>.</p>
+        </div>
+      </section>
+
+      <!-- ===== 9: New Bottleneck ===== -->
+      <section>
+        <p class="transition-note">This shift creates an entirely new bottleneck...</p>
+        <h2><span class="gradient-text-purple">The New Bottleneck</span></h2>
+        <div class="card-grid">
+          <div class="card card-accent-purple">
+            <span class="emoji-icon">🤖</span>
+            <h4>AI Abundance</h4>
+            <p>Code generation, testing, documentation, and architecture suggestions are becoming commoditized.</p>
+          </div>
+          <div class="card card-accent-orange">
+            <span class="emoji-icon">🧠</span>
+            <h4>Human Scarcity</h4>
+            <p><strong>Attention</strong>, <strong>creative ideas</strong>, and <strong>original thinking</strong> are now the rarest resources.</p>
+          </div>
+        </div>
+        <p style="font-size: 0.6em; color: #777; margin-top: 14px; text-align: center;">The bottleneck has shifted from <em>execution capacity</em> to <em>direction and initiative</em>.</p>
+      </section>
+
+      <!-- ===== 10: Meta-Skill ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #0a0a1a 0%, #0a1a0a 100%)">
+        <p class="transition-note">So what's the skill that fills this gap?</p>
+        <h2>The Meta-Skill for the Future</h2>
+        <div style="text-align: center; margin: 20px 0;">
+          <p class="big-number gradient-text-green">High Agency</p>
+          <p style="font-size: 0.75em; color: #aaa;">The defining characteristic of the next decade of engineering</p>
+        </div>
+        <div class="highlight-box highlight-box-green">
+          <p style="font-size: 0.75em; margin: 0; text-align: center; font-weight: 600;">Initiative beats intellect.</p>
+          <p style="font-size: 0.6em; margin: 6px 0 0; text-align: center; color: #aaa;">AI executes at scale. Humans must provide <strong>vision</strong>, <strong>direction</strong>, and <strong>initiative</strong>.</p>
+        </div>
+      </section>
+
+      <!-- ===== 11: Barriers ===== -->
+      <section>
+        <p class="transition-note">If high agency is so valuable, what stops people from operating that way?</p>
+        <h2><span class="gradient-text-red">Barriers to Performance</span></h2>
+        <div class="card-grid">
+          <div class="card card-accent-red"><h4 style="color: var(--accent-red);">Fear of Failure</h4><p>Waiting for certainty. Seeking permission loops. Avoiding visible risk.</p></div>
+          <div class="card card-accent-yellow"><h4 style="color: var(--accent-yellow);">Learned Helplessness</h4><p>"That's not my job." Ticket-taking mentality. Delegating upward.</p></div>
+          <div class="card card-accent-orange"><h4 style="color: var(--accent-orange);">Comfort Addiction</h4><p>Optimizing for easy wins. Avoiding hard architectural problems.</p></div>
+          <div class="card card-accent-purple"><h4 style="color: var(--accent-purple);">Analysis Paralysis</h4><p>Over-engineering decisions. Infinite research. Confusing thinking with doing.</p></div>
+        </div>
+        <p style="font-size: 0.55em; color: #555; margin-top: 10px; text-align: center;">The rest of this talk is about systematically dismantling each of these barriers.</p>
+      </section>
+
+      <!-- ===== 12: Breaking Through ===== -->
+      <section>
+        <p class="transition-note">The good news: each barrier has a specific antidote...</p>
+        <h2>Breaking Through</h2>
+        <div class="level-stack">
+          <div class="level-bar" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;"><div style="font-weight: 600; color: #ef4444; min-width: 160px;">Fear of Failure</div><div class="level-desc">&rarr; Reframe failure as <strong>data collection</strong>. Every experiment teaches.</div></div>
+          <div class="level-bar" style="background: rgba(234,179,8,0.08); border-left: 4px solid #eab308;"><div style="font-weight: 600; color: #eab308; min-width: 160px;">Learned Helplessness</div><div class="level-desc">&rarr; Raise the <strong>agency floor</strong>. Set Level 4 as baseline expectation.</div></div>
+          <div class="level-bar" style="background: rgba(255,107,53,0.08); border-left: 4px solid #ff6b35;"><div style="font-weight: 600; color: #ff6b35; min-width: 160px;">Comfort Addiction</div><div class="level-desc">&rarr; Prioritize <strong>Leverage tasks</strong>. Celebrate hard problems.</div></div>
+          <div class="level-bar" style="background: rgba(168,85,247,0.08); border-left: 4px solid #a855f7;"><div style="font-weight: 600; color: #a855f7; min-width: 160px;">Analysis Paralysis</div><div class="level-desc">&rarr; Embrace <strong>small experiments</strong>. Ship &rarr; learn &rarr; iterate.</div></div>
+        </div>
+        <p style="font-size: 0.55em; color: #666; margin-top: 10px; text-align: center;">Let's start with the most insidious barrier: the intelligence trap.</p>
+      </section>
+
+      <!-- ===== SECTION II: INTELLIGENCE TRAP ===== -->
+
+      <!-- ===== 13: Section Title ===== -->
+      <section class="section-title" data-background-gradient="linear-gradient(135deg, #1a001a 0%, #0a0a0f 100%)">
+        <p style="font-size: 0.65em; color: var(--accent-purple); font-weight: 600; letter-spacing: 0.1em;">PART II</p>
+        <h2><span class="gradient-text-purple">Escaping the<br>Intelligence Trap</span></h2>
+        <p style="font-size: 0.6em; color: #666; margin-top: 16px;">From analysis paralysis to the 5 levels of agency.</p>
+        <div class="journey-tracker">
+          <div class="journey-step done">Paradigm Shift</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step active" style="color: var(--accent-purple); border-color: var(--accent-purple); background: rgba(168,85,247,0.1);">Intelligence Trap</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Ownership</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Systems</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">AI-Native</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Conclusion</div>
+        </div>
+      </section>
+
+      <!-- ===== 14: Intelligence Trap ===== -->
+      <section>
+        <p class="transition-note">The biggest barrier isn't lack of ability &mdash; it's too much of it...</p>
+        <h2>The Intelligence Trap</h2>
+        <p class="quote">"The smarter you are, the better you are at constructing a narrative that supports inaction."</p>
+        <div class="card-grid" style="margin-top: 12px;">
+          <div class="card card-accent-red">
+            <h4 style="color: var(--accent-red);">What happens</h4>
+            <ul class="compact"><li>Seek perfect certainty before acting</li><li>See every possible failure mode</li><li>Over-engineer for edge cases</li><li>Wait to "know everything"</li></ul>
+          </div>
+          <div class="card card-accent-green">
+            <h4 style="color: var(--accent-green);">What it costs</h4>
+            <ul class="compact"><li>Missed market windows</li><li>Wasted team capacity</li><li>Morale erosion</li><li>Competitor advantage</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 15: Analysis Paralysis in Action ===== -->
+      <section>
+        <p class="transition-note">Here's what this looks like in our daily work...</p>
+        <h2><span class="gradient-text-orange">Analysis Paralysis in Action</span></h2>
+        <p style="font-size: 0.55em; color: #777; margin-bottom: 8px;">Scenario: Production deployments take 45 minutes and fail 30% of the time.</p>
+        <div class="versus">
+          <div class="side side-left">
+            <h4 style="color: var(--accent-red);">The Trap (Team A)</h4>
+            <p style="font-size: 0.55em !important; color: #ccc;">"Let's form a working group to evaluate CI/CD platforms. We need a comparison matrix of Jenkins, GitLab CI, GitHub Actions, ArgoCD, and Tekton across 40 criteria."</p>
+            <p style="font-size: 0.48em !important; color: #888; margin-top: 8px;"><strong>Week 4:</strong> Matrix 80% complete, debating weighting.<br><strong>Week 8:</strong> Stakeholder review pushed to next quarter.<br><strong>Week 12:</strong> Still 45 min. Still failing 30%.</p>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="side side-right">
+            <h4 style="color: var(--accent-green);">High Agency (Team B)</h4>
+            <p style="font-size: 0.55em !important; color: #ccc;">"I profiled our pipeline last night. 60% of time is pulling uncached Docker layers. I pushed a caching fix. Deploys are down to 18 minutes. Here's the data."</p>
+            <p style="font-size: 0.48em !important; color: #888; margin-top: 8px;"><strong>Day 1:</strong> Root cause found through action.<br><strong>Day 2:</strong> Fix shipped, measurable improvement.<br><strong>Day 5:</strong> Failure rate dropped to 8%.</p>
+          </div>
+        </div>
+        <p style="font-size: 0.55em; text-align: center; margin-top: 10px; color: #888;">Team A sought the <em>perfect answer</em>. Team B sought the <em>fastest learning</em>.</p>
+      </section>
+
+      <!-- ===== 16: 10x Engineer Myth ===== -->
+      <section>
+        <p class="transition-note">This is also why the "10x engineer" myth is so misunderstood...</p>
+        <h2>The <span class="gradient-text-cyan">10x Engineer</span> Myth</h2>
+        <div class="card-grid">
+          <div class="card card-accent-red">
+            <h4 style="color: var(--accent-red);">What people think</h4>
+            <ul class="compact"><li>Writes code 10x faster</li><li>Knows every language</li><li>Works 80-hour weeks</li><li>Solo genius in a dark room</li></ul>
+          </div>
+          <div class="card card-accent-green">
+            <h4 style="color: var(--accent-green);">What it actually is</h4>
+            <ul class="compact"><li>Proactively finds problems to fix</li><li>Streamlines processes for the team</li><li>Builds tools without being asked</li><li>Multiplies the team's output</li></ul>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 12px;">
+          <p style="font-size: 0.65em; margin: 0; text-align: center;">The 10x engineer is a <strong style="color: var(--accent-cyan);">high-agency individual</strong>, not a faster typist.</p>
+        </div>
+      </section>
+
+      <!-- ===== 17: STORY — A 10x moment ===== 
+      <section class="story-slide" data-background-gradient="linear-gradient(135deg, #001a1a 0%, #0a0a0f 100%)">
+        <div class="story-badge">Your Story</div>
+        <h2 style="font-size: 1.4em;">A "10x moment" you witnessed</h2>
+        <p class="story-prompt-text">Tell the audience about someone on your team (or a team you observed) who embodied high agency. What did they do? What was the impact? Make the audience <em>see</em> themselves in the story.</p>
+        <p class="speaker-note">Speaker note: 60-90 seconds. Best if it's someone junior who surprised you, or someone who fixed something nobody asked them to fix. End with: "That's what Level 5 looks like in the wild. Let me show you the full framework."</p>
+      </section> -->
+
+      <!-- ===== 18: 5 Levels Intro ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #1a001a 0%, #0a1a2e 100%)">
+        <p class="transition-note">So if agency is the differentiator, how do we measure it?</p>
+        <h2>The <span class="gradient-text-purple">5 Levels</span> of Agency</h2>
+        <p style="font-size: 0.7em; color: #aaa;">in Platform Engineering</p>
+        <div style="text-align: center; margin: 30px 0;">
+          <p style="font-size: 0.65em; color: #888;">Every interaction with a problem can be mapped<br>to one of five distinct levels of agency.</p>
+          <p style="font-size: 0.65em; color: var(--accent-purple); font-weight: 600; margin-top: 16px;">Let's walk through each one with the same scenario:<br>a broken CI/CD pipeline.</p>
+        </div>
+      </section>
+
+      <!-- ===== 19: Level 1 ===== -->
+      <section>
+        <h2 style="font-size: 1.3em;">Level 1 &mdash; <span style="color: var(--accent-red);">Problem Identification</span></h2>
+        <div class="level-bar level-1" style="font-size: 0.75em; padding: 14px 24px;"><div>"The CI/CD pipeline is broken."</div></div>
+        <div class="card" style="margin-top: 20px; border-top: 3px solid #ef4444;">
+          <h4 style="color: var(--accent-red);">Characteristics</h4>
+          <ul class="compact"><li>Simply reports that something is wrong</li><li>No investigation into cause or impact</li><li>Delegates the entire problem upward</li><li>Creates more work for leadership, not less</li></ul>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 20%; background: #ef4444;"></div></div>
+        <p style="font-size: 0.45em; color: #555;">Agency Level: 20% &mdash; The bare minimum. But at least they spoke up.</p>
+      </section>
+
+      <!-- ===== 20: Level 2 ===== -->
+      <section>
+        <p class="transition-note">A step up: they investigate before raising the alarm...</p>
+        <h2 style="font-size: 1.3em;">Level 2 &mdash; <span style="color: var(--accent-yellow);">Cause Analysis</span></h2>
+        <div class="level-bar level-2" style="font-size: 0.75em; padding: 14px 24px;"><div>"The pipeline is broken because of an API credentials issue."</div></div>
+        <div class="card" style="margin-top: 20px; border-top: 3px solid #eab308;">
+          <h4 style="color: var(--accent-yellow);">Characteristics</h4>
+          <ul class="compact"><li>Investigates and identifies root cause</li><li>Shows technical competence</li><li>Still waits for someone else to fix it</li><li>Better, but still creates a dependency</li></ul>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 40%; background: #eab308;"></div></div>
+        <p style="font-size: 0.45em; color: #555;">Agency Level: 40% &mdash; Good diagnosis, but the ball is still in someone else's court.</p>
+      </section>
+
+      <!-- ===== 21: Level 3 ===== -->
+      <section>
+        <p class="transition-note">Now they start proposing paths forward...</p>
+        <h2 style="font-size: 1.3em;">Level 3 &mdash; <span style="color: var(--accent-orange);">Solution Exploration</span></h2>
+        <div class="level-bar level-3" style="font-size: 0.75em; padding: 14px 24px;"><div>"We could roll back or update the credentials."</div></div>
+        <div class="card" style="margin-top: 20px; border-top: 3px solid #ff6b35;">
+          <h4 style="color: var(--accent-orange);">Characteristics</h4>
+          <ul class="compact"><li>Proposes possible solutions</li><li>Shows initiative beyond diagnosis</li><li>Hasn't validated any options yet</li><li>Still needs a decision-maker to choose</li></ul>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 60%; background: #ff6b35;"></div></div>
+        <p style="font-size: 0.45em; color: #555;">Agency Level: 60% &mdash; Options without data. We can go further.</p>
+      </section>
+
+      <!-- ===== 22: Level 4 ===== -->
+      <section>
+        <p class="transition-note">This is where the shift gets dramatic...</p>
+        <h2 style="font-size: 1.3em;">Level 4 &mdash; <span style="color: var(--accent-green);">Solution Recommendation</span></h2>
+        <div class="level-bar level-4" style="font-size: 0.75em; padding: 14px 24px;"><div>"The API updated; I tested the fix in staging. Can I deploy?"</div></div>
+        <div class="card" style="margin-top: 20px; border-top: 3px solid #22c55e;">
+          <h4 style="color: var(--accent-green);">Characteristics</h4>
+          <ul class="compact"><li>Investigated, validated, and tested a solution</li><li>Presents data-backed recommendation</li><li>Only needs a "yes" to proceed</li><li>Reduces leadership load dramatically</li></ul>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 80%; background: #22c55e;"></div></div>
+        <p style="font-size: 0.45em; color: #555;">Agency Level: 80% &mdash; The leader's job becomes a 5-second approval.</p>
+      </section>
+
+      <!-- ===== 23: Level 5 ===== -->
+      <section>
+        <p class="transition-note">And at the highest level, leadership isn't even needed...</p>
+        <h2 style="font-size: 1.3em;">Level 5 &mdash; <span style="color: var(--accent-purple);">Problem Resolution</span></h2>
+        <div class="level-bar level-5" style="font-size: 0.75em; padding: 14px 24px;"><div>"I updated the credentials, deployed the fix, and added monitoring."</div></div>
+        <div class="card" style="margin-top: 20px; border-top: 3px solid #a855f7;">
+          <h4 style="color: var(--accent-purple);">Characteristics</h4>
+          <ul class="compact"><li>Fully autonomous problem resolution</li><li>Proactively prevents recurrence</li><li>Communicates after the fact</li><li>Creates systemic improvement</li></ul>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: linear-gradient(90deg, #a855f7, #ec4899);"></div></div>
+        <p style="font-size: 0.45em; color: #555;">Agency Level: 100% &mdash; The problem was solved before leadership even heard about it.</p>
+      </section>
+
+      <!-- ===== 24: Agency Ladder ===== -->
+      <section>
+        <p class="transition-note">Let's see the full picture side by side...</p>
+        <h2>The <span class="gradient-text-purple">Agency Ladder</span></h2>
+        <div class="level-stack">
+          <div class="level-bar level-5"><span class="level-num" style="color: #a855f7;">5</span><span class="level-label" style="color: #a855f7;">Resolution</span><span class="level-desc">"Fixed it, deployed it, added monitoring."</span></div>
+          <div class="level-bar level-4"><span class="level-num" style="color: #22c55e;">4</span><span class="level-label" style="color: #22c55e;">Recommendation</span><span class="level-desc">"Tested the fix in staging. Can I deploy?"</span></div>
+          <div class="level-bar level-3"><span class="level-num" style="color: #ff6b35;">3</span><span class="level-label" style="color: #ff6b35;">Exploration</span><span class="level-desc">"We could roll back or update credentials."</span></div>
+          <div class="level-bar level-2"><span class="level-num" style="color: #eab308;">2</span><span class="level-label" style="color: #eab308;">Analysis</span><span class="level-desc">"It's broken because of API credentials."</span></div>
+          <div class="level-bar level-1"><span class="level-num" style="color: #ef4444;">1</span><span class="level-label" style="color: #ef4444;">Identification</span><span class="level-desc">"The pipeline is broken."</span></div>
+        </div>
+        <p style="font-size: 0.5em; color: #666; margin-top: 10px; text-align: center;">Same problem. Five vastly different responses.</p>
+      </section>
+
+      <!-- ===== 25: INTERACTION — Pulse Check ===== -->
+      <section class="interaction-slide" data-background-gradient="linear-gradient(135deg, #0a1a1a 0%, #0a0a1a 100%)">
+        <div class="interaction-badge">Audience Check-In</div>
+        <h2 style="font-size: 1.5em;">Quick Pulse Check</h2>
+        <p class="interaction-prompt">Think about the <em>last problem</em> you encountered at work.<br>What level did you respond at?</p>
+        <div class="level-stack" style="max-width: 600px; margin: 16px auto;">
+          <div class="level-bar level-5" style="justify-content: center;"><span style="color: #a855f7; font-weight: 600;">Level 5</span></div>
+          <div class="level-bar level-4" style="justify-content: center;"><span style="color: #22c55e; font-weight: 600;">Level 4</span></div>
+          <div class="level-bar level-3" style="justify-content: center;"><span style="color: #ff6b35; font-weight: 600;">Level 3</span></div>
+          <div class="level-bar level-2" style="justify-content: center;"><span style="color: #eab308; font-weight: 600;">Level 2</span></div>
+          <div class="level-bar level-1" style="justify-content: center;"><span style="color: #ef4444; font-weight: 600;">Level 1</span></div>
+        </div>
+        <p class="interaction-instructions">Show of hands. Be honest &mdash; this isn't a test, it's a baseline. We'll revisit at the end.</p>
+      </section>
+
+      <!-- ===== 26: Setting the Standard ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #001a0a 0%, #0a0a0f 100%)">
+        <p class="transition-note">Now the critical question: what should our team standard be?</p>
+        <h2>Setting the Team Standard</h2>
+        <div style="text-align: center; margin: 14px 0;">
+          <p class="big-number" style="font-size: 3.5em;">Level <span style="color: var(--accent-green);">4</span></p>
+          <p style="font-size: 0.8em; color: #aaa;">is the <strong>minimum baseline</strong> expectation</p>
+        </div>
+        <div class="card-grid">
+          <div class="card card-accent-green"><h4 style="color: var(--accent-green);">Why Level 4?</h4><ul class="compact"><li>Scales better than adding headcount</li><li>Frees leadership for strategic work</li><li>Builds trust and autonomy</li></ul></div>
+          <div class="card card-accent-purple"><h4 style="color: var(--accent-purple);">The Multiplier Effect</h4><ul class="compact"><li>Faster decision cycles</li><li>Higher team morale</li></ul></div>
+        </div>
+        <p style="font-size: 0.5em; color: #555; margin-top: 10px; text-align: center;">But knowing the levels is one thing. Building the <em>culture</em> to sustain them is another...</p>
+      </section>
+
+      <!-- ===== SECTION III: EXTREME OWNERSHIP ===== -->
+
+      <!-- ===== 27: Section Title ===== -->
+      <section class="section-title" data-background-gradient="linear-gradient(135deg, #001a00 0%, #0a0a0f 100%)">
+        <p style="font-size: 0.65em; color: var(--accent-green); font-weight: 600; letter-spacing: 0.1em;">PART III</p>
+        <h2><span class="gradient-text-green">Extreme Ownership &<br>Psychological Safety</span></h2>
+        <p style="font-size: 0.6em; color: #666; margin-top: 16px;">The cultural foundations that make Level 4+ possible.</p>
+        <div class="journey-tracker">
+          <div class="journey-step done">Paradigm Shift</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">Intelligence Trap</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step active" style="color: var(--accent-green); border-color: var(--accent-green); background: rgba(34,197,94,0.1);">Ownership</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Systems</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">AI-Native</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Conclusion</div>
+        </div>
+      </section>
+
+      <!-- ===== 28: Operating System ===== -->
+      <section>
+        <p class="transition-note">Agency needs an operating system to run on. That OS is Extreme Ownership.</p>
+        <h2>The <span class="gradient-text-green">Operating System</span> of Agency</h2>
+        <div class="card-grid-3">
+          <div class="card card-accent-green"><span class="emoji-icon">🎯</span><h4 style="color: var(--accent-green);">Own Everything</h4><p>Own everything that impacts the platform. No finger-pointing. No excuses.</p></div>
+          <div class="card card-accent-cyan"><span class="emoji-icon">👥</span><h4 style="color: var(--accent-cyan);">No Bad Teams</h4><p>"No bad teams, only bad leaders." Performance starts at the top.</p></div>
+          <div class="card card-accent-purple"><span class="emoji-icon">⚡</span><h4 style="color: var(--accent-purple);">Prioritize &amp; Execute</h4><p>Overwhelmed? Identify highest priority, execute, reassess. Repeat.</p></div>
+        </div>
+        <p style="font-size: 0.55em; color: #666; margin-top: 10px; text-align: center;">These principles sound simple. Living them under pressure is the hard part.</p>
+      </section>
+
+      <!-- ===== 29: Decisiveness ===== -->
+      <section>
+        <p class="transition-note">Ownership means making decisions &mdash; especially when you don't have all the answers...</p>
+        <h2><span class="gradient-text-orange">Decisiveness</span> Amid Uncertainty</h2>
+        <div class="versus" style="margin-top: 12px;">
+          <div class="side side-left">
+            <h4 style="color: var(--accent-red);">Low Agency Mindset</h4>
+            <p style="font-size: 0.6em !important; color: #ccc;">"We can't migrate until we have 100% test coverage."</p>
+            <p style="font-size: 0.5em !important; color: #888; margin-top: 6px;">Treats obstacles as <strong>reasons to stop</strong></p>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="side side-right">
+            <h4 style="color: var(--accent-green);">High Agency Mindset</h4>
+            <p style="font-size: 0.6em !important; color: #ccc;">"Let's canary-deploy to 5% and validate incrementally."</p>
+            <p style="font-size: 0.5em !important; color: #888; margin-top: 6px;">Treats obstacles as <strong>constraints to navigate</strong></p>
+          </div>
+        </div>
+        <div class="highlight-box-orange highlight-box" style="margin-top: 12px;">
+          <p style="font-size: 0.6em; margin: 0; text-align: center;">Favor small, iterative experiments over massive, rigid plans.</p>
+        </div>
+      </section>
+
+      <!-- ===== 30: Psychological Safety ===== -->
+      <section>
+        <p class="transition-note">But ownership requires one critical ingredient that leaders must provide...</p>
+        <h2>The <span class="gradient-text-cyan">Fearless</span> Organization</h2>
+        <div class="highlight-box" style="margin: 12px 0;">
+          <p style="font-size: 0.65em; margin: 0; text-align: center;"><strong>High agency cannot exist without psychological safety.</strong></p>
+          <p style="font-size: 0.55em; margin: 6px 0 0; text-align: center; color: #aaa;">If engineers fear punishment, they default to <strong style="color: var(--accent-red);">dangerous silence</strong>.</p>
+        </div>
+        <div class="card-grid">
+          <div class="card card-accent-red"><h4 style="color: var(--accent-red);">VW Dieselgate</h4><p>Engineers knew about emissions cheating but feared speaking up. Cost: $30B+ in fines.</p></div>
+          <div class="card card-accent-red"><h4 style="color: var(--accent-red);">NASA Columbia</h4><p>Engineers flagged foam strike risks but were overruled by hierarchy. Cost: 7 lives.</p></div>
+        </div>
+        <p style="font-size: 0.5em; text-align: center; margin-top: 8px; color: #666;">Fear of punishment &rarr; Silence &rarr; Everyone reverts to Level 1</p>
+      </section>
+
+      <!-- ===== 31: Fear-Safety Spectrum ===== -->
+      <section>
+        <p class="transition-note">Where does your team sit on this spectrum?</p>
+        <h2>The Fear &harr; Safety Spectrum</h2>
+        <div class="level-stack">
+          <div class="level-bar" style="background: rgba(239,68,68,0.1); border-left: 4px solid #ef4444;"><div style="font-weight: 700; color: #ef4444; min-width: 130px;">Fear Culture</div><div class="level-desc">Mistakes punished &rarr; Problems hidden &rarr; Catastrophes</div></div>
+          <div class="level-bar" style="background: rgba(234,179,8,0.1); border-left: 4px solid #eab308;"><div style="font-weight: 700; color: #eab308; min-width: 130px;">Cautious</div><div class="level-desc">Mistakes tolerated &rarr; Problems reported late &rarr; Firefighting</div></div>
+          <div class="level-bar" style="background: rgba(34,197,94,0.1); border-left: 4px solid #22c55e;"><div style="font-weight: 700; color: #22c55e; min-width: 130px;">Safe</div><div class="level-desc">Mistakes are learning &rarr; Issues raised early &rarr; Proactive improvement</div></div>
+          <div class="level-bar" style="background: rgba(168,85,247,0.1); border-left: 4px solid #a855f7;"><div style="font-weight: 700; color: #a855f7; min-width: 130px;">Fearless</div><div class="level-desc">Experiments celebrated &rarr; Smart risks taken &rarr; Innovation</div></div>
+        </div>
+        <p style="font-size: 0.5em; color: #666; margin-top: 10px; text-align: center;">Moving up requires leaders to change how they respond to failure.</p>
+      </section>
+
+      <!-- ===== 32: INTERACTION — Pair Discussion ===== 
+      <section class="interaction-slide" data-background-gradient="linear-gradient(135deg, #001a00 0%, #0a0a1a 100%)">
+        <div class="interaction-badge">2-Minute Exercise</div>
+        <h2 style="font-size: 1.5em;">Pair Discussion</h2>
+        <p class="interaction-prompt">Turn to the person next to you and discuss:</p>
+        <div style="max-width: 650px; margin: 16px auto; text-align: left;">
+          <div class="level-bar" style="background: rgba(78,205,196,0.1); border-left: 4px solid var(--accent-blue); margin-bottom: 10px;">
+            <div class="level-desc" style="font-size: 1.1em;"><strong style="color: var(--accent-blue);">1.</strong> Where does our team sit on the fear &harr; safety spectrum?</div>
+          </div>
+          <div class="level-bar" style="background: rgba(78,205,196,0.1); border-left: 4px solid var(--accent-blue);">
+            <div class="level-desc" style="font-size: 1.1em;"><strong style="color: var(--accent-blue);">2.</strong> What's one thing leadership could do <em>this week</em> to move us one step up?</div>
+          </div>
+        </div>
+        <p class="interaction-instructions">2 minutes. Be specific &mdash; name a behavior, not a platitude.</p>
+      </section> -->
+
+      <!-- ===== 33: Reframing Failure ===== -->
+      <section>
+        <p class="transition-note">The key: distinguish between two fundamentally different kinds of failure...</p>
+        <h2><span class="gradient-text-orange">Re-framing Failure</span></h2>
+        <div class="versus">
+          <div class="side side-left">
+            <h4 style="color: var(--accent-red);">Preventable Failures</h4>
+            <ul class="compact"><li>Known process violations</li><li>Ignoring best practices</li><li>Cutting corners on testing</li></ul>
+            <p style="font-size: 0.5em !important; color: var(--accent-red); margin-top: 8px; font-weight: 600;">Address through process improvement</p>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="side side-right">
+            <h4 style="color: var(--accent-green);">Intelligent Failures</h4>
+            <ul class="compact"><li>Thoughtful experiments in new territory</li><li>Testing hypotheses with real data</li><li>Pushing boundaries of what's possible</li></ul>
+            <p style="font-size: 0.5em !important; color: var(--accent-green); margin-top: 8px; font-weight: 600;">Celebrate &mdash; these generate vital learning</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 34: Celebrating Intelligent Failure ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #001a0a 0%, #0a0a1a 100%)">
+        <p class="transition-note">How do leaders make this real, not just words on a wall?</p>
+        <h2>Celebrating <span class="gradient-text-green">Intelligent Failure</span></h2>
+        <div class="card-grid">
+          <div class="card card-accent-green"><h4 style="color: var(--accent-green);">Leadership Actions</h4><ul class="compact"><li>Share post-mortems as learning, not blame</li><li>Reward engineers who ran experiments</li><li>Ask "What did we learn?" not "Who did this?"</li><li>Share your own failures publicly</li></ul></div>
+          <div class="card card-accent-cyan"><h4 style="color: var(--accent-cyan);">What This Unlocks</h4><ul class="compact"><li>Engineers take calculated risks</li><li>Problems surface early and small</li><li>Innovation becomes organic</li><li>Agency levels rise across the team</li></ul></div>
+        </div>
+      </section>
+
+      <!-- ===== 35: STORY — When silence cost us ===== 
+      <section class="story-slide" data-background-gradient="linear-gradient(135deg, #1a0000 0%, #0a0a0f 100%)">
+        <div class="story-badge">Your Story</div>
+        <h2 style="font-size: 1.4em;">When silence cost us</h2>
+        <p class="story-prompt-text">Share a time when someone on your team (or you yourself) saw a problem coming but didn't speak up &mdash; and what it cost. Then share what changed after that moment.</p>
+        <p class="speaker-note">Speaker note: This is the emotional peak of Part III. Be vulnerable. The audience will remember this story longer than any framework. 90 seconds. End with: "That's why psychological safety isn't optional &mdash; it's the foundation everything else is built on."</p>
+      </section> -->
+
+      <!-- ===== 36: How to Increase Competence ===== -->
+      <section>
+        <p class="transition-note">Safety gives people permission to act. Competence gives them the ability.</p>
+        <h2><span class="gradient-text-blue">How to Increase Competence</span></h2>
+        <div class="card-grid">
+          <div class="card card-accent-blue"><h4 style="color: var(--accent-blue);">Deliberate Practice</h4><p>Work at the edge of your comfort zone. Struggle is where growth happens.</p></div>
+          <div class="card card-accent-purple"><h4 style="color: var(--accent-purple);">Tight Feedback Loops</h4><p>Deploy to staging daily. Run chaos experiments. Measure everything.</p></div>
+          <div class="card card-accent-green"><h4 style="color: var(--accent-green);">Cross-Pollination</h4><p>Learn adjacent domains. A platform engineer who understands product is 10x more effective.</p></div>
+          <div class="card card-accent-orange"><h4 style="color: var(--accent-orange);">Build &amp; Teach</h4><p>Build internal tools. Write runbooks. Mentor juniors. Teaching forces deep understanding.</p></div>
+        </div>
+        <p style="font-size: 0.55em; color: #666; margin-top: 8px; text-align: center;">With agency, ownership, and growing competence &mdash; we now need <em>direction</em>.</p>
+      </section>
+
+      <!-- ===== SECTION IV: SYSTEMS THINKING ===== -->
+
+      <!-- ===== 37: Section Title ===== -->
+      <section class="section-title" data-background-gradient="linear-gradient(135deg, #001a1a 0%, #0a0a0f 100%)">
+        <p style="font-size: 0.65em; color: var(--accent-cyan); font-weight: 600; letter-spacing: 0.1em;">PART IV</p>
+        <h2><span class="gradient-text-cyan">Systems Thinking &<br>Product Mindset</span></h2>
+        <p style="font-size: 0.6em; color: #666; margin-top: 16px;">With agency, ownership, and safety in place &mdash; where do we point the energy?</p>
+        <div class="journey-tracker">
+          <div class="journey-step done">Paradigm Shift</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">Intelligence Trap</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">Ownership</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step active" style="color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(6,182,212,0.1);">Systems</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">AI-Native</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Conclusion</div>
+        </div>
+      </section>
+
+      <!-- ===== 38: Systems Thinking ===== -->
+      <section>
+        <p class="transition-note">It starts by changing how we think. Most teams think in tickets. High-agency teams think in systems.</p>
+        <h2><span class="gradient-text-cyan">Systems Thinking</span></h2>
+        <div class="card-grid">
+          <div class="card card-accent-red"><h4 style="color: var(--accent-red);">Linear Thinking</h4><ul class="compact"><li>"More servers = better performance"</li><li>Ignores cascading effects</li><li>Fixes symptoms, not root causes</li></ul></div>
+          <div class="card card-accent-cyan"><h4 style="color: var(--accent-cyan);">Systems Thinking</h4><ul class="compact"><li>"More servers might increase coordination overhead"</li><li>Maps feedback loops and dependencies</li><li>Considers second and third-order effects</li></ul></div>
+        </div>
+        <div class="highlight-box" style="margin-top: 10px; background: rgba(6,182,212,0.08); border-color: rgba(6,182,212,0.25);">
+          <p style="font-size: 0.6em; margin: 0; text-align: center;">Linear thinking fixes symptoms. <strong style="color: var(--accent-cyan);">Systems thinking</strong> fixes root causes.</p>
+        </div>
+      </section>
+
+      <!-- ===== 39: Platform as Product ===== -->
+      <section>
+        <p class="transition-note">When you apply systems thinking to your platform, the first thing you realize: it's not a project. It's a product.</p>
+        <h2><span class="gradient-text-cyan">Platform as a Product</span></h2>
+        <div class="versus">
+          <div class="side side-left" style="background: rgba(234,179,8,0.06); border-color: rgba(234,179,8,0.15);">
+            <h4 style="color: var(--accent-yellow);">Project Thinking</h4>
+            <ul class="compact"><li>Ship features from a backlog</li><li>"Done" when the ticket closes</li><li>Success = delivery on time</li><li>Users are an afterthought</li></ul>
+          </div>
+          <div class="vs-divider">&rarr;</div>
+          <div class="side side-right">
+            <h4 style="color: var(--accent-green);">Product Thinking</h4>
+            <ul class="compact"><li>Understand developer needs deeply</li><li>"Done" when user outcome is achieved</li><li>Success = developer velocity</li><li>Users inform every decision</li></ul>
+          </div>
+        </div>
+        <div class="highlight-box highlight-box-green" style="margin-top: 10px;">
+          <p style="font-size: 0.6em; margin: 0; text-align: center;">Your users are internal developers. Treat them like paying customers.</p>
+        </div>
+      </section>
+
+      <!-- ===== 40: Developer Experience ===== -->
+      <section>
+        <p class="transition-note">So if developers are our customers, how well are we serving them today?</p>
+        <h2>The <span class="gradient-text-green">Developer Experience</span> Gap</h2>
+        <div class="card-grid">
+          <div class="card card-accent-green"><h4 style="color: var(--accent-green);">What developers want</h4><ul class="compact"><li>Fast feedback loops</li><li>Self-service capabilities</li><li>Clear, current documentation</li><li>Guardrails, not gates</li></ul></div>
+          <div class="card card-accent-orange"><h4 style="color: var(--accent-orange);">What we often give them</h4><ul class="compact"><li>Complex tools requiring training</li><li>Approval workflows for everything</li><li>Tribal knowledge via Slack DMs</li><li>Checkpoints that slow them down</li></ul></div>
+        </div>
+        <p style="font-size: 0.55em; color: #666; margin-top: 10px; text-align: center;">Closing this gap is where high-agency platform teams create the most impact.</p>
+      </section>
+
+      <!-- ===== 41: Product Biases ===== -->
+      <section>
+        <p class="transition-note">But even teams with good intentions fall into two predictable traps...</p>
+        <h2>Overcoming <span class="gradient-text-orange">Product Biases</span></h2>
+        <p style="font-size: 0.55em; color: #888;">Two biases that plague smart teams</p>
+        <div class="card-grid" style="margin-top: 12px;">
+          <div class="card card-accent-orange"><h4 style="color: var(--accent-orange);">Execution Orientation Fallacy</h4><p>Building what is <strong>easiest today</strong> rather than tackling complex, high-value architectural problems.</p><p style="margin-top: 6px; color: var(--accent-orange);">"We shipped 12 features!" &mdash; but the DB migration that would 10x perf is untouched.</p></div>
+          <div class="card card-accent-red"><h4 style="color: var(--accent-red);">Bias-for-Building Fallacy</h4><p>Rushing to code <strong>without understanding</strong> if developers actually need the tool.</p><p style="margin-top: 6px; color: var(--accent-red);">"We built an amazing CLI!" &mdash; but nobody uses it because devs wanted a web UI.</p></div>
+        </div>
+      </section>
+
+      <!-- ===== 42: LNO Framework ===== -->
+      <section>
+        <p class="transition-note">The antidote to both biases: ruthless prioritization of where you spend energy.</p>
+        <h2>The <span class="gradient-text-purple">LNO Framework</span></h2>
+        <p style="font-size: 0.55em; color: #888; margin-bottom: 10px;">A framework for ruthless prioritization</p>
+        <div class="card-grid-3">
+          <div class="card card-accent-purple" style="text-align: center;"><span class="emoji-icon">🔥</span><h4 style="color: var(--accent-purple); font-size: 0.85em;">Leverage</h4><p>10x impact. Your best work creates disproportionate value.</p><p style="color: var(--accent-purple); font-weight: 600; margin-top: 4px;">Peak energy. Full attention.</p></div>
+          <div class="card card-accent-blue" style="text-align: center;"><span class="emoji-icon">➡️</span><h4 style="color: var(--accent-blue); font-size: 0.85em;">Neutral</h4><p>Expected results. Extra effort doesn't multiply outcomes.</p><p style="color: var(--accent-blue); font-weight: 600; margin-top: 4px;">Steady pace. Good enough.</p></div>
+          <div class="card card-accent-yellow" style="text-align: center;"><span class="emoji-icon">📋</span><h4 style="color: var(--accent-yellow); font-size: 0.85em;">Overhead</h4><p>Necessary but low-impact. Automate, delegate, or batch.</p><p style="color: var(--accent-yellow); font-weight: 600; margin-top: 4px;">Minimum viable effort.</p></div>
+        </div>
+      </section>
+
+      <!-- ===== INTERACTION — Sort Your Sprint (commented out) ===== 
+      <section class="interaction-slide" data-background-gradient="linear-gradient(135deg, #0a0a1a 0%, #001a1a 100%)">
+        <div class="interaction-badge">90-Second Exercise</div>
+        <h2 style="font-size: 1.5em;">Sort Your Current Sprint</h2>
+        <p class="interaction-prompt">Mentally list the top 5 things you're working on <em>right now</em>.<br>Classify each one:</p>
+        <div style="display: flex; justify-content: center; gap: 30px; margin: 20px 0;">
+          <div style="text-align: center;">
+            <div style="font-size: 1.8em;">🔥</div>
+            <p style="font-size: 0.6em !important; color: var(--accent-purple); font-weight: 700;">Leverage?</p>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 1.8em;">➡️</div>
+            <p style="font-size: 0.6em !important; color: var(--accent-blue); font-weight: 700;">Neutral?</p>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 1.8em;">📋</div>
+            <p style="font-size: 0.6em !important; color: var(--accent-yellow); font-weight: 700;">Overhead?</p>
+          </div>
+        </div>
+        <p class="interaction-instructions">Be honest: how much of your peak energy is going to Overhead tasks?<br>The high-agency move is to fix that ratio <em>this week</em>.</p>
+      </section> -->
+
+      <!-- ===== 43: 10-30-50 Rule ===== -->
+      <section>
+        <p class="transition-note">You've prioritized what to work on. Now invest in the skills to execute at the highest level.</p>
+        <h2>The <span class="gradient-text-green">10-30-50 Rule</span></h2>
+        <p style="font-size: 0.55em; color: #888; margin-bottom: 10px;">Building T-shaped engineers for maximum leverage</p>
+        <div class="card-grid-3">
+          <div class="card card-accent-purple" style="text-align: center;"><p style="font-size: 2.2em !important; font-weight: 900; color: var(--accent-purple); margin: 0; line-height: 1;">10%</p><h4 style="color: var(--accent-purple);">Core Mastery</h4><p><strong>Top 10%</strong> in one core skill. Your superpower.</p><p style="color: #666; margin-top: 4px;">e.g., Kubernetes, distributed systems</p></div>
+          <div class="card card-accent-cyan" style="text-align: center;"><p style="font-size: 2.2em !important; font-weight: 900; color: var(--accent-cyan); margin: 0; line-height: 1;">30%</p><h4 style="color: var(--accent-cyan);">Complementary</h4><p><strong>Top 30%</strong> in a skill that amplifies your core.</p><p style="color: #666; margin-top: 4px;">e.g., Security, product management</p></div>
+          <div class="card card-accent-green" style="text-align: center;"><p style="font-size: 2.2em !important; font-weight: 900; color: var(--accent-green); margin: 0; line-height: 1;">50%</p><h4 style="color: var(--accent-green);">Breadth</h4><p><strong>Top 50%</strong> in a third for cross-functional fluency.</p><p style="color: #666; margin-top: 4px;">e.g., Data engineering, ML/AI</p></div>
+        </div>
+        <p style="font-size: 0.45em; color: #555; margin-top: 12px; text-align: center; font-style: italic;">These are percentile ranks (how you compare to peers), not time allocation. They don't add up to 100%.</p>
+        <p style="font-size: 0.55em; color: #666; margin-top: 8px; text-align: center;">We've covered the mindset, culture, and systems. Now there's one more force multiplier...</p>
+      </section>
+
+      <!-- ===== SECTION V: AI-NATIVE ===== -->
+
+      <!-- ===== 45: Section Title ===== -->
+      <section class="section-title" data-background-gradient="linear-gradient(135deg, #00001a 0%, #0a0a0f 100%)">
+        <p style="font-size: 0.65em; color: var(--accent-blue); font-weight: 600; letter-spacing: 0.1em;">PART V</p>
+        <h2><span class="gradient-text-blue">The AI-Native<br>Platform Team</span></h2>
+        <p style="font-size: 0.6em; color: #666; margin-top: 16px;">We have the mindset, the culture, and the systems. Now add the accelerant.</p>
+        <div class="journey-tracker">
+          <div class="journey-step done">Paradigm Shift</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">Intelligence Trap</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">Ownership</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">Systems</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step active" style="color: var(--accent-blue); border-color: var(--accent-blue); background: rgba(59,130,246,0.1);">AI-Native</div>
+          <div class="journey-connector"></div>
+          <div class="journey-step">Conclusion</div>
+        </div>
+      </section>
+
+      <!-- ===== 46: Agile Automates Itself ===== -->
+      <section>
+        <p class="transition-note">Remember the feedback loops, sprints, and retros we run manually? AI is about to collapse all of them.</p>
+        <h2>When <span class="gradient-text-blue">Agile Automates Itself</span></h2>
+        <div class="versus">
+          <div class="side" style="background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.15);">
+            <h4 style="color: var(--accent-yellow);">Traditional Agile</h4>
+            <div style="text-align: center; margin: 10px 0;"><p style="font-size: 0.55em !important; color: var(--accent-yellow);">Build &rarr; Measure &rarr; Learn</p><p style="font-size: 0.45em !important; color: #777; margin-top: 6px;">2-4 week sprints<br>Manual retrospectives</p></div>
+          </div>
+          <div class="vs-divider">&rarr;</div>
+          <div class="side side-right" style="background: rgba(108,156,255,0.06); border-color: rgba(108,156,255,0.15);">
+            <h4 style="color: var(--accent-blue);">AI-Augmented Agile</h4>
+            <div style="text-align: center; margin: 10px 0;"><p style="font-size: 0.55em !important; color: var(--accent-blue);">Build &harr; Measure &harr; Learn</p><p style="font-size: 0.45em !important; color: #777; margin-top: 6px;">Near-instantaneous cycles<br>Continuous optimization</p></div>
+          </div>
+        </div>
+        <p style="font-size: 0.6em; text-align: center; margin-top: 12px; color: #888;">The human role shifts from execution to orchestration.</p>
+      </section>
+
+      <!-- ===== 47: The 4 Cs ===== -->
+      <section>
+        <p class="transition-note">If AI handles the building, measuring, and learning &mdash; what's left for the human?</p>
+        <h2>The New Human Value: <span class="gradient-text-purple">The 4 Cs</span></h2>
+        <div class="card-grid">
+          <div class="card card-accent-purple"><span class="emoji-icon">🧭</span><h4 style="color: var(--accent-purple);">Context</h4><p>Strategy, ethics, organizational knowledge. Understanding <em>why</em> we build what we build.</p></div>
+          <div class="card card-accent-orange"><span class="emoji-icon">💡</span><h4 style="color: var(--accent-orange);">Creation</h4><p>Innovating beyond today's problems. Imagining solutions that don't exist yet.</p></div>
+          <div class="card card-accent-green"><span class="emoji-icon">🤝</span><h4 style="color: var(--accent-green);">Coaching</h4><p>Supporting people to thrive alongside machines. Growing the next generation.</p></div>
+          <div class="card card-accent-cyan"><span class="emoji-icon">🛡️</span><h4 style="color: var(--accent-cyan);">Compliance</h4><p>Ensuring trust in systems. Governance, audit trails, ethical AI usage.</p></div>
+        </div>
+      </section>
+
+      <!-- ===== 48: Human-AI Teaming ===== -->
+      <section>
+        <p class="transition-note">These human skills only matter if the AI tools we build are designed for trust, not just speed.</p>
+        <h2><span class="gradient-text-blue">Designing for Human-AI Teaming</span></h2>
+        <div class="card-grid">
+          <div class="card card-accent-blue"><span class="emoji-icon">👁️</span><h4 style="color: var(--accent-blue);">Transparency</h4><p>Engineers must see <strong>what the AI is doing</strong> in real-time. No black boxes. Show reasoning and confidence.</p></div>
+          <div class="card card-accent-purple"><span class="emoji-icon">📖</span><h4 style="color: var(--accent-purple);">Explainability</h4><p>Engineers must understand <strong>why the AI decided</strong> something. Show the trigger and logic.</p></div>
+        </div>
+        <div class="highlight-box" style="margin-top: 12px;">
+          <p style="font-size: 0.6em; margin: 0; text-align: center;">Without these, AI tools create <strong style="color: var(--accent-red);">cognitive overload</strong> and erode <strong style="color: var(--accent-red);">situational awareness</strong>.</p>
+        </div>
+      </section>
+
+      <!-- ===== 49: Future Engineer ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #0a001a 0%, #001a1a 100%)">
+        <p class="transition-note">Put it all together &mdash; agency, ownership, systems thinking, AI &mdash; and this is who you become.</p>
+        <h2>The <span class="gradient-text-blue">Future</span> Platform Engineer</h2>
+        <div class="versus">
+          <div class="side" style="background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.15);">
+            <h4 style="color: var(--accent-yellow);">Today</h4>
+            <ul class="compact"><li>Writes CDK modules</li><li>Configures CI/CD pipelines</li><li>Manages infrastructure</li><li>Responds to incidents</li></ul>
+          </div>
+          <div class="vs-divider">&rarr;</div>
+          <div class="side side-right" style="background: rgba(108,156,255,0.06); border-color: rgba(108,156,255,0.15);">
+            <h4 style="color: var(--accent-blue);">Tomorrow</h4>
+            <ul class="compact"><li>Architects AI-driven platforms</li><li>Designs self-healing systems</li><li>Curates developer experiences</li><li>Orchestrates AI agents</li></ul>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 12px; background: rgba(108,156,255,0.08); border-color: rgba(108,156,255,0.25);">
+          <p style="font-size: 0.65em; margin: 0; text-align: center; font-weight: 600; color: var(--accent-blue);">The platform engineer becomes the architect of intelligent systems.</p>
+        </div>
+      </section>
+
+      <!-- ===== SECTION VI: CONCLUSION ===== -->
+
+      <!-- ===== 50: Section Title ===== -->
+      <section class="section-title" data-background-gradient="linear-gradient(135deg, #1a0a1a 0%, #0a0a1a 100%)">
+        <p style="font-size: 0.65em; color: #888; font-weight: 600; letter-spacing: 0.1em;">PART VI</p>
+        <h2>Conclusion &<br><span class="gradient-text-purple">Call to Action</span></h2>
+        <p style="font-size: 0.6em; color: #666; margin-top: 16px;">From insight to action.</p>
+        <div class="journey-tracker">
+          <div class="journey-step done">Paradigm Shift</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">Intelligence Trap</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">Ownership</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">Systems</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step done">AI-Native</div>
+          <div class="journey-connector done"></div>
+          <div class="journey-step active" style="color: #c084fc; border-color: #c084fc; background: rgba(192,132,252,0.1);">Conclusion</div>
+        </div>
+      </section>
+
+      <!-- ===== 51: STORY — What changed ===== 
+      <section class="story-slide" data-background-gradient="linear-gradient(135deg, #0a1a0a 0%, #0a0a0f 100%)">
+        <div class="story-badge">Your Story</div>
+        <h2 style="font-size: 1.4em;">What changed when we started<br>operating differently</h2>
+        <p class="story-prompt-text">Share a concrete before/after. A team, a project, a quarter where applying these ideas produced measurable results. Numbers, outcomes, how people felt.</p>
+        <p class="speaker-note">Speaker note: This is your proof point. Connect it back to the opening story. "Remember the teams I mentioned at the start? Here's what happened when we tried this ourselves..." 90 seconds.</p>
+      </section> -->
+
+      <!-- ===== 52: Summary ===== -->
+      <section>
+        <p class="transition-note">Let's trace the thread we've followed today...</p>
+        <h2><span class="gradient-text-blue">The Full Picture</span></h2>
+        <div class="level-stack">
+          <div class="level-bar" style="background: rgba(255,107,53,0.08); border-left: 4px solid #ff6b35;"><div class="level-desc"><strong style="color: #ff6b35;">Initiative beats intellect.</strong> Agency is the meta-skill of the AI era.</div></div>
+          <div class="level-bar" style="background: rgba(168,85,247,0.08); border-left: 4px solid #a855f7;"><div class="level-desc"><strong style="color: #a855f7;">Level 4 is the baseline.</strong> Come with tested solutions, not just problems.</div></div>
+          <div class="level-bar" style="background: rgba(34,197,94,0.08); border-left: 4px solid #22c55e;"><div class="level-desc"><strong style="color: #22c55e;">Own everything.</strong> Extreme ownership + psychological safety unlocks agency.</div></div>
+          <div class="level-bar" style="background: rgba(78,205,196,0.08); border-left: 4px solid #4ecdc4;"><div class="level-desc"><strong style="color: #4ecdc4;">Think in systems.</strong> Treat your platform as a product, developers as customers.</div></div>
+          <div class="level-bar" style="background: rgba(108,156,255,0.08); border-left: 4px solid #6c9cff;"><div class="level-desc"><strong style="color: #6c9cff;">Embrace the AI shift.</strong> Become orchestrators of intelligent systems.</div></div>
+        </div>
+        <p style="font-size: 0.5em; color: #555; margin-top: 8px; text-align: center;">Each layer builds on the one before it. You can't skip steps.</p>
+      </section>
+
+      <!-- ===== 53: Call to Action ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #1a0a00 0%, #0a0a1a 100%)">
+        <p class="transition-note">Knowing isn't enough. Here's your challenge, starting today...</p>
+        <h2><span class="gradient-text-orange">Your Challenge</span></h2>
+        <div class="card-grid">
+          <div class="card card-accent-orange"><h4 style="color: var(--accent-orange);">Operate at Level 4+</h4><p>For every problem this week, bring a tested recommendation, not just a report.</p></div>
+          <div class="card card-accent-green"><h4 style="color: var(--accent-green);">Communicate Assertively</h4><p>Share ideas. Push back on low-leverage work. Advocate for improvements.</p></div>
+          <div class="card card-accent-purple"><h4 style="color: var(--accent-purple);">Reframe Obstacles</h4><p>Every obstacle is an opportunity to architect a better system. Constraints, not blockers.</p></div>
+          <div class="card card-accent-cyan"><h4 style="color: var(--accent-cyan);">Invest in Competence</h4><p>Apply the 10-30-50 rule. Pick your next skill and start this week.</p></div>
+        </div>
+      </section>
+
+      <!-- ===== 54: The Closing Line ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%)">
+        <div style="text-align: center; margin-top: 40px;">
+          <p style="font-size: 1.3em; font-weight: 300; color: #888; margin-bottom: 20px;">The question was never</p>
+          <h2 style="font-size: 2em; font-weight: 900; margin-bottom: 20px;"><span class="gradient-text-orange">"Are you smart enough?"</span></h2>
+          <p style="font-size: 1.3em; font-weight: 300; color: #888; margin-bottom: 20px;">It was always</p>
+          <h2 style="font-size: 2em; font-weight: 900;"><span class="gradient-text-green">"What will you do about it?"</span></h2>
+        </div>
+      </section>
+
+      <!-- ===== 55: Q&A — Agency Ladder stays visible ===== -->
+      <section data-background-color="#0a0a0f">
+        <div style="display: flex; gap: 40px; align-items: flex-start;">
+          <div style="flex: 1;">
+            <h2 style="margin-bottom: 16px;"><span class="gradient-text-purple">Q &amp; A</span></h2>
+            <p style="font-size: 0.6em; color: #888; margin-bottom: 20px;">Let's discuss how to apply these<br>frameworks to our current work.</p>
+            <div class="highlight-box" style="margin-top: 16px; padding: 12px 18px;">
+              <p style="font-size: 0.55em; margin: 0; color: #aaa;">Some starting questions:</p>
+              <ul class="compact" style="margin-top: 8px;">
+                <li style="color: #bbb;">What's stopping the team from Level 4 today?</li>
+                <li style="color: #bbb;">Where is your biggest LNO imbalance?</li>
+                <li style="color: #bbb;">What's one experiment you'd run this sprint?</li>
+              </ul>
+            </div>
+          </div>
+          <div style="flex: 1;">
+            <p style="font-size: 0.55em; color: #555; margin-bottom: 10px; text-align: center;">THE AGENCY LADDER</p>
+            <div class="level-stack">
+              <div class="level-bar level-5"><span class="level-num" style="color: #a855f7;">5</span><span class="level-label" style="color: #a855f7;">Resolution</span></div>
+              <div class="level-bar level-4"><span class="level-num" style="color: #22c55e;">4</span><span class="level-label" style="color: #22c55e;">Recommendation</span></div>
+              <div class="level-bar level-3"><span class="level-num" style="color: #ff6b35;">3</span><span class="level-label" style="color: #ff6b35;">Exploration</span></div>
+              <div class="level-bar level-2"><span class="level-num" style="color: #eab308;">2</span><span class="level-label" style="color: #eab308;">Analysis</span></div>
+              <div class="level-bar level-1"><span class="level-num" style="color: #ef4444;">1</span><span class="level-label" style="color: #ef4444;">Identification</span></div>
+            </div>
+            <p style="font-size: 0.45em; color: #444; margin-top: 10px; text-align: center;">Level 4 = minimum baseline</p>
+          </div>
+        </div>
+        <p style="font-size: 0.4em; color: #333; text-align: center; margin-top: 20px;">Thank you for your time and attention.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      showSlideNumber: 'all',
+      progress: true,
+      center: true,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      width: 1280,
+      height: 720,
+      margin: 0.06,
+      plugins: [RevealNotes, RevealHighlight],
+      keyboard: { 39: 'next', 37: 'prev' }
+    });
+  </script>
+</body>
+</html>
